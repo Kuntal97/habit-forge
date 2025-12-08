@@ -1,21 +1,14 @@
-import { useState, useEffect } from "react";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 function App() {
-	const [message, setMessage] = useState("");
-
-	useEffect(() => {
-		fetch("http://localhost:3000")
-			.then((res) => res.text())
-			.then((data) => setMessage(data));
-	}, []);
-
 	return (
-		<>
-			<div>
-				<h1>HabitForge Client</h1>
-				<p>Backend says: {message}</p>
-			</div>
-		</>
+		<div>
+			<h1>HabitForge</h1>
+			<Signup />
+			<hr />
+			<Login />
+		</div>
 	);
 }
 
