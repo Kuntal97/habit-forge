@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
+	const navigate = useNavigate();
 	const [data, setData] = useState({
 		name: "",
 		email: "",
@@ -21,13 +23,15 @@ export default function Signup() {
 			);
 			alert(res.data.message);
 			setData({ name: "", email: "", password: "" });
+			navigate("/login");
 		} catch (error) {
-			alert(error.response?.data?.message || "Signup failed");
+			console.error("Signup error:", err);
+			alert("Signup failed. Check console.");
 		}
 	};
 
 	return (
-		<div>
+		<div style={{ maxWidth: "400px", margin: "40px auto" }}>
 			<h2>Signup</h2>
 			<form onSubmit={handleSubmit}>
 				<input
