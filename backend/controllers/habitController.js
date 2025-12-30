@@ -81,7 +81,7 @@ exports.deleteHabit = async (req, res) => {
 		const userId = req.user.id;
 		const habitId = req.params.id;
 
-		const habit = await Habit.findOne({ _id: habitId, userId });
+		const habit = await Habit.findOne({ _id: habitId, user: userId });
 
 		if (!habit) {
 			return res.status(404).json({
